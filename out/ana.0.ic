@@ -1,0 +1,18 @@
+# "simulator" "XA"
+# "format" "SPECTRE"
+# "netlist" "simv.daidir/xa_cosim_top.scs"
+# "runtitle" ""
+# temperature =   27
+# time =    0
+# BEGIN: Saved Operating Point 
+# nodeset
+0 0
+mos_level1.vsource 0
+mos_level1.vdrain 0
+mos_level1.vbody 0
+mos_level1.vgate 0
+nlckt.e1 0.5
+nlckt.e2 -0.5
+nlckt.snps_dummy_1 0
+nlckt.snps_dummy_2 0
+###   END: Saved Operating Point ###

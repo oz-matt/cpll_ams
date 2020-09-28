@@ -1,0 +1,23 @@
+`include "ams-models/res.va"
+`include "ams-models/mos_level1.va"
+`include "ams-models/vsrc.vams"
+
+module nlckt();
+
+  electrical e1, e2;
+  wreal wr;
+  reg clk;
+
+always #1 clk <= !clk;
+
+  res #(.r(10k)) r1 (e1, e2, wr, clk);
+  vsrc #(.dc(1)) vsrc(e1, e2);
+
+  initial begin
+clk <= 0;
+    #5;
+    $display ("hihi: %f", wr);
+#5;
+$finish;
+  end
+endmodule

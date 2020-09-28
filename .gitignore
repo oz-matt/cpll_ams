@@ -1,0 +1,15 @@
+*.report
+*.log
+*log
+*.fsdb
+*~
+*.dat.work.*
+*.vpd
+*.key
+*.project
+simv
+
+/csrc
+/simv.daidir
+/simv.msv
+

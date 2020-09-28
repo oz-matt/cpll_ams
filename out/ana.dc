@@ -1,0 +1,19 @@
+* "simulator" "XA" 
+* "format" "HSP" 
+* time = 0 
+*** BEGIN: DC Convergence Report 
+********************************************
+* Nodes that Failed to Converge 
+* Nodes name = node value $ node DCI | node DCV| instance Contributing the biggest current 
+********************************************
+* Nodes that were normally converged 
+* Nodes name = node value $ node DCI | node DCV| instance Contributing the biggest current 
+.nodeset 
++v(mos_level1.vsource) = 0.00000e+00 $ 0.00000e+00 | 0.00000e+00 | 
++v(mos_level1.vdrain) = 0.00000e+00 $ 0.00000e+00 | 0.00000e+00 | 
++v(mos_level1.vbody) = 0.00000e+00 $ 0.00000e+00 | 0.00000e+00 | 
++v(mos_level1.vgate) = 0.00000e+00 $ 0.00000e+00 | 0.00000e+00 | 
++v(nlckt.e1) = 5.00000e-01 $ -7.00000e-12 | -0.00000e+00 | nlckt.vsrcd (i=-1.00000e-04)
++v(nlckt.e2) = -5.00000e-01 $ 7.00000e-12 | 0.00000e+00 | nlckt.vsrcd (i=1.00000e-04)
++v(nlckt.snps_dummy_1) = 0.00000e+00 $ 0.00000e+00 | 0.00000e+00 | 
++v(nlckt.snps_dummy_2) = 0.00000e+00 $ 0.00000e+00 | 0.00000e+00 | 
