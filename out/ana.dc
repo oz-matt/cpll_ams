@@ -9,11 +9,10 @@
 * Nodes that were normally converged 
 * Nodes name = node value $ node DCI | node DCV| instance Contributing the biggest current 
 .nodeset 
-+v(diode_simple.vn) = 0.00000e+00 $ 0.00000e+00 | 0.00000e+00 | 
-+v(diode_simple.vp) = 0.00000e+00 $ 0.00000e+00 | 0.00000e+00 | 
-+v(nlckt.o1) = 3.00000e+00 $ -2.71299e-11 | 6.50051e-82 | nlckt.i5d (i=-3.28296e-03)
-+v(nlckt.o2) = -1.34360e-07 $ 5.48810e-11 | 1.40878e-07 | nlckt.i3d (i=5.48810e-11)
-+v(nlckt.cin) = -1.10949e-85 $ 3.00000e-12 | 4.59835e-86 | nlckt.vpd (i=3.00000e-12)
-+v(nlckt.cme) = 2.33608e-01 $ -9.23069e-10 | 2.27405e-07 | nlckt.i35d (i=-9.22131e-04)
-+v(nlckt.vdd) = 3.00000e+00 $ -2.36627e-11 | 3.80232e-85 | nlckt.i5d (i=3.28296e-03)
-+v(nlckt.vcovgnd) = -1.47604e-07 $ -6.66526e-10 | 1.52674e-07 | nlckt.i33d (i=-6.11635e-10)
++v(nlckt5.o1) = 3.00000e+00 $ -2.25250e-11 | 0.00000e+00 | nlckt5.i6d (i=-1.46917e-03)
++v(nlckt5.o2) = 3.00000e+00 $ -1.35250e-11 | 0.00000e+00 | nlckt5.i5d (i=-1.46917e-03)
++v(nlckt5.cin) = 0.00000e+00 $ 3.00000e-12 | 0.00000e+00 | nlckt5.vpd (i=3.00000e-12)
++v(nlckt5.cme) = 2.33609e-01 $ 5.06448e-12 | 2.64771e-13 | nlckt5.i34d (i=9.22130e-04)
++v(nlckt5.vdd) = 3.00000e+00 $ -2.26648e-11 | 0.00000e+00 | nlckt5.v0d (i=-3.86046e-03)
++v(nlckt5.vcovgnd) = 8.67933e-01 $ 1.74417e-11 | 1.39988e-12 | nlckt5.i33d (i=2.93833e-03)
++v(nlckt5.vctrl) = -2.00000e+00 $ 1.20000e-11 | 0.00000e+00 | nlckt5.vcd (i=1.40000e-11)

@@ -7,25 +7,26 @@
 `include "ams-models/diode_simple.va"
 `include "ams-models/vpulse.va"
 
-module nlckt();
+module nlckt5();
 
 electrical vcovgnd, o1, o2, vdd, vctrl, cme, cin, gnd;
 ground gnd;
 
 //VCO
 vsrc #(3) v0(vdd, gnd);
+//drain, gate, source, body
 
 mos_level1 i4(o1, o2, vcovgnd, vcovgnd);
 mos_level1 i3(o2, o1, vcovgnd, vcovgnd);
 cap #(500f) i25(o1, o2);
 ind #(1n) i6(o1, vdd);
-ind #(1n) i5(o1, vdd);
+ind #(1n) i5(o2, vdd);
 
 //CTRL
-//vsrc #(-2) vc(vctrl, gnd);
+vsrc #(-2) vc(vctrl, gnd);
 
-//diode_simple i31(vctrl, o1);
-//diode_simple i30(vctrl, o2);
+diode_simple i31(vctrl, o1);
+diode_simple i30(vctrl, o2);
 
 //CURR_SRC
 mos_level1 i33(vcovgnd, vdd, gnd, gnd);
@@ -43,20 +44,3 @@ $finish;
 
 endmodule
 
-/*
-module nlckt();
-
-  electrical e1, e2;
-  ground e2;
-
-  res #(.r(10k)) r1 (e1, e2);
-  vpulse#(.mag(3), .td(1n), .tt(1p), .tw(1n)) vp(e1, e2);
-
-  initial begin
-    #5;
-    //$display ("hihi: %f", wr);
-#5;
-$finish;
-  end
-endmodule
-*/

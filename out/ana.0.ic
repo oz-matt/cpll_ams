@@ -7,12 +7,11 @@
 # BEGIN: Saved Operating Point 
 # nodeset
 0 0
-diode_simple.vn 0
-diode_simple.vp 0
-nlckt.o1 3
-nlckt.o2 -1.3436e-07
-nlckt.cin -1.10949e-85
-nlckt.cme 0.233608
-nlckt.vdd 3
-nlckt.vcovgnd -1.47604e-07
+nlckt5.o1 3
+nlckt5.o2 3
+nlckt5.cin 0
+nlckt5.cme 0.233609
+nlckt5.vdd 3
+nlckt5.vcovgnd 0.867933
+nlckt5.vctrl -2
 ###   END: Saved Operating Point ###
