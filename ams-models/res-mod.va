@@ -25,15 +25,24 @@
 //    {none}
 //
 
-module res(vp, vn);
+module res_mod(vp, vn, wr, clk);
 inout vp, vn;
+input clk;
+output wr;
 parameter real r = 0;
 
 electrical vp, vn;
+logic clk;
+wreal wr;
+real ci;
 
    analog begin
       V(vp, vn) <+ r*I(vp, vn);
 end
+
+always @(posedge clk) ci <= I(vp,vn);
+
+assign wr = ci;
 
 endmodule
 

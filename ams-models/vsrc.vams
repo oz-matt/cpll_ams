@@ -2,7 +2,8 @@
 
  module vsrc (p, n);  
    parameter real dc=0; // dc voltage (V)  
-   output p, n;    electrical p, n;   
+   output p, n;    
+electrical p, n;   
   analog      
 V(p,n) <+ dc;  
  endmodule

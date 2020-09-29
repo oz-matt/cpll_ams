@@ -1,0 +1,6 @@
+10
+-287291985
+simv.daidir/vpulse.v 
++v2k -realport -full64 -vlib simv.daidir/spicelib simv.daidir/vpulse.v -l simv.daidir/vpulse.v.log -ams -q
+   /home/work/synopsys/L-2016.06/linux64/bin/vcs1 -Mcc=gcc -Mcplusplus=g++ -Masflags= -Mcfl=' -pipe -O -I/home/work/synopsys/L-2016.06/include ' -Mldflags=" " -Mout=simv -Mamsrun="" -Mvcsaceobjs="" -Mobjects=" " -Msaverestoreobj= -Mcrt0="" -Mcrtn="" -Mcsrc="" -Msyslibs="-ldl "
+-l simv.daidir/vpulse.v.log  -Xvlogan=0x1 +v2k -realport -full64  -outdir=simv.daidir/spicelib  "simv.daidir/vpulse.v" +verilogams -XepicAms=0x1 -q    
