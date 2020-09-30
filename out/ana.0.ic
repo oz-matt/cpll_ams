@@ -7,11 +7,13 @@
 # BEGIN: Saved Operating Point 
 # nodeset
 0 0
-nlckt5.o1 3
-nlckt5.o2 3
-nlckt5.cin 0
-nlckt5.cme 0.233609
-nlckt5.vdd 3
-nlckt5.vcovgnd 0.867933
-nlckt5.vctrl -2
+top.o1 3
+top.o2 3
+top.cin 0
+top.cme 0.233609
+top.vdd 3
+top.vcovgnd 0.867933
+top.vctrl -2
+top.snps_dummy_1 0
+top.snps_dummy_2 0
 ###   END: Saved Operating Point ###

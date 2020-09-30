@@ -1,0 +1,54 @@
+`include "src/ams-models/res.va"
+`include "src/ams-models/mos_level1.va"
+`include "src/ams-models/cap.va"
+`include "src/ams-models/ind.va"
+`include "src/vsrc.vams"
+`include "src/ams-models/diode_simple.va"
+`include "src/vpulse.va"
+`include "src/freqmeasure.vams"
+
+module top();
+
+electrical vcovgnd, o1, o2, vdd, vctrl, cme, cin, gnd;
+ground gnd;
+wreal s;
+reg clk;
+
+initial clk = 0;
+always #1 clk <= !clk;
+
+freqmeasure fm(o1, gnd, s, clk);
+
+//VCO
+vsrc #(3) v0(vdd, gnd);
+//drain, gate, source, body
+
+mos_level1 i4(o1, o2, vcovgnd, vcovgnd);
+mos_level1 i3(o2, o1, vcovgnd, vcovgnd);
+cap #(500f) i25(o1, o2);
+ind #(1n) i6(o1, vdd);
+ind #(1n) i5(o2, vdd);
+
+//CTRL
+vsrc #(-2) vc(vctrl, gnd);
+
+diode_simple i31(vctrl, o1);
+diode_simple i30(vctrl, o2);
+
+//CURR_SRC
+mos_level1 i33(vcovgnd, vdd, gnd, gnd);
+mos_level1 i34(cme, vdd, gnd, gnd);
+res#(3K) i35(cme, vdd);
+
+//I TRIGGER
+mos_level1 i32(o1, cin, gnd, gnd);
+vpulse#(.mag(3), .td(1n), .tt(1p), .tw(1n)) vp(cin, gnd);
+
+initial begin
+    #100;
+   $display("freq s: %e", s);
+$finish;
+  end
+
+endmodule
+
