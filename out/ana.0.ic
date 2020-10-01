@@ -17,4 +17,5 @@ top.vcovgnd 0.867933
 top.vctrl 3
 top.snps_dummy_1 0
 top.snps_dummy_2 0
+top.snps_dummy_3 0
 ###   END: Saved Operating Point ###

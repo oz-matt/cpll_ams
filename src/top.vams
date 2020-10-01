@@ -9,15 +9,15 @@
 
 module top();
 
-electrical vcovgnd, o1, o2, ondc, vdd, vctrl, cme, cin, gnd;
+electrical vcovgnd, o1, o2, ondc, vdd, vctrl, cme, cin, gnd, d;
 ground gnd;
-wreal s;
+wreal s, maxv;
 reg clk;
 
 initial clk = 0;
 always #1 clk <= !clk;
 
-freqmeasure fm(ondc, gnd, s, clk);
+freqmeasure fm(ondc, gnd, s, clk, maxv);
 
 //VCO
 vsrc #(3) v0(vdd, gnd);
@@ -47,7 +47,7 @@ vpulse#(.mag(3), .td(1n), .tt(1p), .tw(1n)) vp(cin, gnd);
 
 initial begin
     #100;
-   $display("freq s: %e", s);
+   $display("freq s: %e, mag : %e", s, maxv);
 $finish;
   end
 
