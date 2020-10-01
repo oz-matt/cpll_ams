@@ -9,12 +9,13 @@
 * Nodes that were normally converged 
 * Nodes name = node value $ node DCI | node DCV| instance Contributing the biggest current 
 .nodeset 
-+v(top.o1) = 3.00000e+00 $ -2.25250e-11 | 0.00000e+00 | top.i6d (i=-1.46917e-03)
-+v(top.o2) = 3.00000e+00 $ -1.35250e-11 | 0.00000e+00 | top.i5d (i=-1.46917e-03)
++v(top.o1) = 3.00000e+00 $ -1.75250e-11 | 0.00000e+00 | top.i6d (i=-1.46917e-03)
++v(top.o2) = 3.00000e+00 $ -8.52495e-12 | 0.00000e+00 | top.i5d (i=-1.46917e-03)
 +v(top.cin) = 0.00000e+00 $ 3.00000e-12 | 0.00000e+00 | top.vpd (i=3.00000e-12)
 +v(top.cme) = 2.33609e-01 $ 5.06448e-12 | 2.64771e-13 | top.i34d (i=9.22130e-04)
 +v(top.vdd) = 3.00000e+00 $ -2.26648e-11 | 0.00000e+00 | top.v0d (i=-3.86046e-03)
++v(top.ondc) = 0.00000e+00 $ 0.00000e+00 | 0.00000e+00 | 
 +v(top.vcovgnd) = 8.67933e-01 $ 1.74417e-11 | 1.39988e-12 | top.i33d (i=2.93833e-03)
-+v(top.vctrl) = -2.00000e+00 $ 1.20000e-11 | 0.00000e+00 | top.vcd (i=1.40000e-11)
++v(top.vctrl) = 3.00000e+00 $ -3.00000e-12 | 0.00000e+00 | top.vcd (i=-3.00000e-12)
 +v(top.snps_dummy_1) = 0.00000e+00 $ 0.00000e+00 | 0.00000e+00 | 
 +v(top.snps_dummy_2) = 0.00000e+00 $ 0.00000e+00 | 0.00000e+00 | 

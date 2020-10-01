@@ -36,8 +36,8 @@ integer i, k, rdy;
       end
       q[i] = s;
       if(rdy) begin
-        for(k=0;k<9;k=k+1) a = a + q[k];
-        f = a/10;
+        for(k=0;k<10;k=k+1) a = a + q[k];
+        f = 10/a;
         a = 0;
       end
     end 

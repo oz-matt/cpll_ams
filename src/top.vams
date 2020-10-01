@@ -9,7 +9,7 @@
 
 module top();
 
-electrical vcovgnd, o1, o2, vdd, vctrl, cme, cin, gnd;
+electrical vcovgnd, o1, o2, ondc, vdd, vctrl, cme, cin, gnd;
 ground gnd;
 wreal s;
 reg clk;
@@ -17,7 +17,7 @@ reg clk;
 initial clk = 0;
 always #1 clk <= !clk;
 
-freqmeasure fm(o1, gnd, s, clk);
+freqmeasure fm(ondc, gnd, s, clk);
 
 //VCO
 vsrc #(3) v0(vdd, gnd);
@@ -30,7 +30,8 @@ ind #(1n) i6(o1, vdd);
 ind #(1n) i5(o2, vdd);
 
 //CTRL
-vsrc #(-2) vc(vctrl, gnd);
+vsrc #(3) vc(vctrl, gnd);
+cap #(500f) dcblock(o2, ondc);
 
 diode_simple i31(vctrl, o1);
 diode_simple i30(vctrl, o2);
