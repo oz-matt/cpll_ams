@@ -6,6 +6,7 @@
 *.dat.work.*
 *.vpd
 *.key
+.*
 *.project
 simv
 simptop.vams
