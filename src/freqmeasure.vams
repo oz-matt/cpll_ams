@@ -1,6 +1,7 @@
 module freqmeasure(e1, gnd, freq, clk, maxv);
 
   electrical e1, gnd;
+  voltage jj;
   ground gnd;
   logic clk;
   input e1, gnd, clk;
@@ -13,8 +14,9 @@ module freqmeasure(e1, gnd, freq, clk, maxv);
 
 integer i, k, j, k2, rdy2, rdy, ti=0;
 
-
   analog begin
+
+V(jj)<+f;
 
     @(initial_step) begin
       t=0;
@@ -66,9 +68,6 @@ integer i, k, j, k2, rdy2, rdy, ti=0;
   always @(posedge clk) begin
     o = f;
     m = mi;
-    for(ti=0;ti<10;ti=ti+1) begin
-      $display("ti[%d] : %f", ti, qm[ti]);
-    end
   end
 
   assign freq = o;

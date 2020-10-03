@@ -6,6 +6,7 @@
 `include "src/ams-models/diode_simple.va"
 `include "src/vpulse.va"
 `include "src/freqmeasure.vams"
+`include "src/vramp.va"
 
 module top();
 
@@ -13,6 +14,7 @@ electrical vcovgnd, o1, o2, ondc, vdd, vctrl, cme, cin, gnd, d;
 ground gnd;
 wreal s, maxv;
 reg clk;
+  integer i;
 
 initial clk = 0;
 always #1 clk <= !clk;
@@ -30,7 +32,8 @@ ind #(1n) i6(o1, vdd);
 ind #(1n) i5(o2, vdd);
 
 //CTRL
-vsrc #(3) vc(vctrl, gnd);
+//vsrc #(3) vc(vctrl, gnd);
+vramp #(.vs(-3), .vf(3), .tt(100n)) vr(vctrl);
 cap #(500f) dcblock(o2, ondc);
 
 diode_simple i31(vctrl, o1);
@@ -46,10 +49,12 @@ mos_level1 i32(o1, cin, gnd, gnd);
 vpulse#(.mag(3), .td(1n), .tt(1p), .tw(1n)) vp(cin, gnd);
 
 initial begin
-    #100;
-   $display("freq s: %e, mag : %e", s, maxv);
-$finish;
+  for(i=0;i<100;i=i+1) begin
+    #1;
+    $display("freq s: %e, mag : %e", s, maxv);
   end
+  $finish;
+end
 
 endmodule
 
