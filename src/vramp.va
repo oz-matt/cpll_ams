@@ -1,9 +1,12 @@
 `include "disciplines.vams"
 `include "constants.h"
 
-module vramp(vout);
+module vramp(vout, wrout);
 
 output vout; voltage vout;
+output wrout; wreal wrout;
+
+real wror;
 
 parameter real vs = -1; //starting voltage
 parameter real vf = 1; //finishing voltage
@@ -28,5 +31,9 @@ analog begin
   V(vout) <+ transition(g, 0, tt);
 
 end
+
+always #1 wror = V(vout);
+
+assign wrout = wror;
 
 endmodule

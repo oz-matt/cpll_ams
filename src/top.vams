@@ -3,6 +3,7 @@
 `include "src/ams-models/mos_level1p.va"
 `include "src/ams-models/cap.va"
 `include "src/ams-models/ind.va"
+`include "src/ams-models/varactor.va"
 `include "src/vsrc.vams"
 `include "src/ams-models/diode_simple.va"
 `include "src/vpulse.va"
@@ -13,7 +14,7 @@ module top();
 
 electrical vcovgnd, o1, o2, ondc, vdd, vctrl, cme, cin, gnd, d, tmid;
 ground gnd;
-wreal s, maxv;
+wreal s, maxv, vwr;
 reg clk;
   integer i;
 
@@ -29,17 +30,21 @@ vsrc #(3) v0(vdd, gnd);
 
 mos_level1 i4(o1, o2, vcovgnd, vcovgnd);
 mos_level1 i3(o2, o1, vcovgnd, vcovgnd);
-cap #(500f) i25(o1, o2);
-ind #(1n) i6(o1, vdd);
-ind #(1n) i5(o2, vdd);
+mos_level1p i3c(o1, o2, vdd, vdd);
+mos_level1p i3c2(o2, o1, vdd, vdd);
+varactor vr1(vctrl, o1);
+varactor vr2(vctrl, o2);
+//cap #(700f) i29(o2, vctrl);
+//cap #(700f) i25(o1, vctrl);
+ind #(1n) i6(o1, o2);
 
 //CTRL
 //vsrc #(3) vc(vctrl, gnd);
-vramp #(.vs(-3), .vf(3), .tt(100n)) vr(vctrl);
+vramp #(.vs(0), .vf(1), .tt(100n)) vr(vctrl, vwr);
 cap #(500f) dcblock(o2, ondc);
 
-diode_simple i31(vctrl, o1);
-diode_simple i30(vctrl, o2);
+//diode_simple i31(vctrl, o1);
+//diode_simple i30(vctrl, o2);
 
 //CURR_SRC
 mos_level1 i33(vcovgnd, vdd, gnd, gnd);
@@ -60,7 +65,7 @@ mos_level1 cn1(tmid, ondc, gnd, gnd);
 initial begin
   for(i=0;i<100;i=i+1) begin
     #1;
-    $display("freq s: %e, mag : %e", s, maxv);
+    $display("freq s: %e, mag : %e, vramp: %e", s, maxv, vwr);
   end
   $finish;
 end
