@@ -82,6 +82,9 @@ discipline current
 	potential    Current;
 enddiscipline
 
+discipline natureless
+domain continuous;
+enddiscipline
 
 
 // Magnetic

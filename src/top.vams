@@ -1,5 +1,6 @@
 `include "src/ams-models/res.va"
 `include "src/ams-models/mos_level1.va"
+`include "src/ams-models/mos_level1p.va"
 `include "src/ams-models/cap.va"
 `include "src/ams-models/ind.va"
 `include "src/vsrc.vams"
@@ -10,7 +11,7 @@
 
 module top();
 
-electrical vcovgnd, o1, o2, ondc, vdd, vctrl, cme, cin, gnd, d;
+electrical vcovgnd, o1, o2, ondc, vdd, vctrl, cme, cin, gnd, d, tmid;
 ground gnd;
 wreal s, maxv;
 reg clk;
@@ -19,6 +20,7 @@ reg clk;
 initial clk = 0;
 always #1 clk <= !clk;
 
+  voltage probe_freq;
 freqmeasure fm(ondc, gnd, s, clk, maxv);
 
 //VCO
@@ -48,6 +50,13 @@ res#(3K) i35(cme, vdd);
 mos_level1 i32(o1, cin, gnd, gnd);
 vpulse#(.mag(3), .td(1n), .tt(1p), .tw(1n)) vp(cin, gnd);
 
+//DIGITIZER
+//drain, gate, source, body
+
+mos_level1p cp1(tmid, ondc, vdd, vdd);
+mos_level1 cn1(tmid, ondc, gnd, gnd);
+
+
 initial begin
   for(i=0;i<100;i=i+1) begin
     #1;
@@ -55,6 +64,8 @@ initial begin
   end
   $finish;
 end
+analog
+    V(probe_freq) <+ s;
 
 endmodule
 

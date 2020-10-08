@@ -1,22 +1,24 @@
 module freqmeasure(e1, gnd, freq, clk, maxv);
 
   electrical e1, gnd;
-  voltage jj;
   ground gnd;
   logic clk;
+  voltage rep;
   input e1, gnd, clk;
   
   wreal freq, maxv;
   output freq, maxv;
 
-  real t, s, a, f, o, m, b, mi;
+  real t, s, a, f, o, m, b, mi, te;
   real q[9:0], qm[9:0];
+
+  integer loi;
 
 integer i, k, j, k2, rdy2, rdy, ti=0;
 
   analog begin
 
-V(jj)<+f;
+  V(rep) <+ te;
 
     @(initial_step) begin
       t=0;
@@ -30,7 +32,7 @@ V(jj)<+f;
       a=0;
       b=0;
       f=0;
-      mi=0;
+      mi=0;loi=0;
     end
 
     @(cross(V(e1, gnd), +1)) begin
@@ -61,14 +63,22 @@ V(jj)<+f;
         mi = b/10;
         b = 0;
       end
-      
     end
+
+    @(timer(7n)) loi=1;
+
   end
 
-  always @(posedge clk) begin
+  always @(absdelta(f,10)) begin
     o = f;
     m = mi;
   end
+
+
+  always @(absdelta(freq,10)) begin
+    te=freq;
+  end
+
 
   assign freq = o;
   assign maxv = m;

@@ -7,15 +7,23 @@
 # BEGIN: Saved Operating Point 
 # nodeset
 0 0
+top.s 0
 top.o1 3
 top.o2 3
 top.cin 0
 top.cme 0.233609
 top.vdd 3
-top.ondc 0
+top.ondc 1.5
+top.tmid 1.5
 top.vcovgnd 0.867933
 top.vctrl -3
+top.probe_freq 0
 top.snps_dummy_1 0
 top.snps_dummy_2 0
 top.snps_dummy_3 0
+top.fm.rep 0
+top.fm.freq 0
+top.fm.snps_devent_2 0
+top.fm.snps_aevent_3 1
+top.fm.snps_aevent_6 1
 ###   END: Saved Operating Point ###

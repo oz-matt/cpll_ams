@@ -1,4 +1,4 @@
-`include "discipline.h"
+`include "disciplines.vams"
 `include "constants.h"
 
 module vramp(vout);
