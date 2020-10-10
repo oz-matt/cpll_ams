@@ -10,14 +10,15 @@
 diode_simple.vn 0
 diode_simple.vp 0
 top.s 0
-top.o1 1.55442
-top.o2 1.55442
+top.cg 0
+top.o1 1.63589
+top.o2 1.63589
 top.cin 0
-top.cme 0.233609
+top.cme 0.194135
 top.vdd 3
 top.ondc 1.5
 top.tmid 1.5
-top.vcovgnd 0.108833
+top.vcovgnd 0.271775
 top.vctrl 0
 top.probe_freq 0
 top.snps_dummy_1 0
@@ -27,6 +28,5 @@ top.snps_dummy_4 0
 top.fm.rep 0
 top.fm.freq 0
 top.fm.snps_devent_2 0
-top.fm.snps_aevent_3 1
-top.fm.snps_aevent_6 1
+top.fm.snps_aevent_5 1
 ###   END: Saved Operating Point ###

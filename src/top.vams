@@ -7,12 +7,13 @@
 `include "src/vsrc.vams"
 `include "src/ams-models/diode_simple.va"
 `include "src/vpulse.va"
+`include "src/vclkgen.va"
 `include "src/freqmeasure.vams"
 `include "src/vramp.va"
 
 module top();
 
-electrical vcovgnd, o1, o2, ondc, vdd, vctrl, cme, cin, gnd, d, tmid;
+electrical vcovgnd, o1, o2, ondc, vdd, vctrl, cme, cin, gnd, d, tmid, cg;
 ground gnd;
 wreal s, maxv, vwr;
 reg clk;
@@ -36,11 +37,11 @@ varactor vr1(vctrl, o1);
 varactor vr2(vctrl, o2);
 //cap #(700f) i29(o2, vctrl);
 //cap #(700f) i25(o1, vctrl);
-ind #(1n) i6(o1, o2);
+ind #(1100p) i6(o1, o2);
 
 //CTRL
 //vsrc #(3) vc(vctrl, gnd);
-vramp #(.vs(0), .vf(1), .tt(100n)) vr(vctrl, vwr);
+vramp #(.vs(0), .vf(3), .tt(100n)) vr(vctrl, vwr);
 cap #(500f) dcblock(o2, ondc);
 
 //diode_simple i31(vctrl, o1);
@@ -60,6 +61,8 @@ vpulse#(.mag(3), .td(1n), .tt(1p), .tw(1n)) vp(cin, gnd);
 
 mos_level1p cp1(tmid, ondc, vdd, vdd);
 mos_level1 cn1(tmid, ondc, gnd, gnd);
+
+vclkgen (cg, gnd);
 
 
 initial begin

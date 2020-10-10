@@ -51,7 +51,7 @@ inout vdrain, vgate, vsource, vbody;
 electrical vdrain, vgate, vsource, vbody;
 parameter real width = 1u from (0:inf);
 parameter real length = 1u from (0:inf);
-parameter real vto = 1 from (0:inf);
+parameter real vto = 0.6 from (0:inf);
 parameter real gamma = 0 from [0:inf);
 parameter real phi = 0.6 from (0:inf);
 parameter real lambda = 0.05 from [0:inf);

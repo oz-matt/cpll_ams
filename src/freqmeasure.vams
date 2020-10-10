@@ -35,7 +35,7 @@ integer i, k, j, k2, rdy2, rdy, ti=0;
       mi=0;loi=0;
     end
 
-    @(cross(V(e1, gnd), +1)) begin
+    @(cross(ddt(V(e1, gnd)), +1)) begin
       s = $abstime - t;
       t = $abstime;
       i=i+1;
@@ -69,7 +69,8 @@ integer i, k, j, k2, rdy2, rdy, ti=0;
 
   end
 
-  always @(absdelta(f,10)) begin
+  //always @(absdelta(f,10)) begin
+  always #1 begin
     o = f;
     m = mi;
   end
