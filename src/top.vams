@@ -12,6 +12,7 @@
 `include "src/vclkgen.va"
 `include "src/freqmeasure.vams"
 `include "src/vramp.va"
+`include "src/freqdivider.va"
 
 module top();
 
@@ -66,11 +67,9 @@ mos_level1 cn1(tmid, ondc, gnd, gnd);
 
 
 
-
-
 // PFD
 
-d_ff_r #(.tdel(3p), .trise(1p), .tfall(1p)) dff1(vdd, tmid, qup, cup, dr);
+d_ff_r #(.tdel(3p), .trise(1p), .tfall(1p)) dff1(vdd, clkout, qup, cup, dr);
 d_ff_r #(.tdel(3p), .trise(1p), .tfall(1p)) dff2(vdd, clkin, qdn, qbu, dr);
 res #(1G) runused(qbu, gnd);
 and_gate ag1(qup, qdn, dr);
@@ -79,9 +78,10 @@ mos_level1 pfdm2(cmid, qdn, gnd, gnd);
 res #(3k) rlpf(cmid, vctrl);
 cap #(1n) clpf(vctrl, gnd);
 
-vclkgen #(.period(250p)) vref(clkin, gnd);
+vclkgen #(.period(1n)) vref(clkin, gnd);
 //vclkgen #(.period(300p)) vout(clkout, gnd);
 
+freqdivider #(.divf(4)) fdiv(tmid, clkout, gnd);
 
 initial begin
   #10000;

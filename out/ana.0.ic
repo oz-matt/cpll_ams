@@ -23,6 +23,7 @@ top.vdd 3
 top.cmid 1.5
 top.ondc 1.5
 top.tmid 1.5
+top.clkout 3
 top.vcovgnd 0.271775
 top.vctrl 1.5
 top.probe_freq 0
